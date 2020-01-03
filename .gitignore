@@ -1,0 +1,16 @@
+O.*/
+/db
+/bin
+/dbd
+/include
+/lib
+/templates
+envPaths
+cdCommands
+dllPath.bat
+runIOC.bat
+runIOC.sh
+relPaths.sh
+*.tags
+/doc/
+.project

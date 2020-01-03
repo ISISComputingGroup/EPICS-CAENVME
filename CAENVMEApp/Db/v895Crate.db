@@ -1,0 +1,15 @@
+## logial VME crate number (for user)
+record(longin, "$(P)$(Q)CR$(CRATE):CRATE")
+{
+    field(DTYP, "asynInt32")
+    field(INP, "@asyn($(PORT),0)CRATE")
+	field(SCAN, "I/O Intr")
+}
+
+## physical board (usb to VME bridge) device number
+record(longin, "$(P)$(Q)CR$(CRATE):BOARD_ID")
+{
+    field(DTYP, "asynInt32")
+    field(INP, "@asyn($(PORT),0)BOARDID")
+	field(SCAN, "I/O Intr")
+}

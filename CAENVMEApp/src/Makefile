@@ -21,7 +21,9 @@ CAENTalk_SRCS += CAENTalk.c getopt.c
 CAENTalk_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 LIBRARY_IOC += CAENVME
-CAENVME_SRCS += CAENVMEWrapper.cpp
+CAENVME_SRCS += CAENVMEWrapper.cpp CAENVMEDriver.cpp
+CAENVME_LIBS += asyn
+CAENVME_LIBS_WIN32 += oncrpc
 CAENVME_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 #===========================

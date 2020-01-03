@@ -1,26 +1,28 @@
-global{P=\$(P),Q=\$(Q)}
+global{P=\$(P),Q=\$(Q),CRATE=\$(CRATE),PORT=\$(PORT)}
 
 file "v895CardHeader.template" {
-  pattern{C,CI}
-  {\$(C),\$(CI)}
+  pattern{C}
+  {\$(C)}
 }
 
+global{C=\$(C)}
+
 file "v895Channel.template" {
-  pattern{CH,BIT}
-  {0,0}
-  {1,1}
-  {2,2}
-  {3,3}
-  {4,4}
-  {5,5}
-  {6,6}
-  {7,7}
-  {8,8}
-  {9,9}
-  {10,A}
-  {11,B}
-  {12,C}
-  {13,D}
-  {14,E}
-  {15,F}
+  pattern{CH,BIT,VMEADDR}
+  {0,0,0x0}
+  {1,1,0x2}
+  {2,2,0x4}
+  {3,3,0x6}
+  {4,4,0x8}
+  {5,5,0xA}
+  {6,6,0xC}
+  {7,7,0xE}
+  {8,8,0x10}
+  {9,9,0x12}
+  {10,A,0x14}
+  {11,B,0x16}
+  {12,C,0x18}
+  {13,D,0x1A}
+  {14,E,0x1C}
+  {15,F,0x1E}
 }

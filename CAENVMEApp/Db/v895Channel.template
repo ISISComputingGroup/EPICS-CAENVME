@@ -1,34 +1,17 @@
-record(ao, "$(P)$(Q)C$(C):CH$(CH):THOLD:SP")
+record(longout, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD:SP")
 {
-    field(DTYP, "asynFloat64")
-    field(OUT, "@asyn($(PORT),$(C))THOLD_$(CH))
-    field(PREC, 3)
+    field(DTYP, "asynUInt32Digital")
+    field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_$(VMEADDR)")
     field(EGU, "mV")
 }
 
-alias("$(P)$(Q)C$(C):CH$(CH):THOLD:SP", "$(P)$(Q)C$(C):CH$(CH):THOLD:SP:RBV")
+alias("$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD:SP", "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD")
 
-record(ai, "$(P)$(Q)C$(C):CH$(CH):THOLD")
-{
-    field(DTYP, "asynFloat64")
-    field(INP, "@asyn($(PORT),$(C))THOLD_$(CH))
-	field(SCAN, "I/O Intr")
-    field(PREC, 3)
-    field(EGU, "mV")
-}
-
-record(bo, "$(P)$(Q)C$(C):CH$(CH):ENABLE:SP")
+record(bo, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE:SP")
 {
     field(ZNAM, "NO")
     field(ONAM, "YES")
-	field(OUT, "$(P)$(Q)C$(C):ENABLE:SP.B$(BIT) PP")
+	field(OUT, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP.B$(BIT) PP")
 }
 
-alias("$(P)$(Q)C$(C):CH$(CH):ENABLE:SP", "$(P)$(Q)C$(C):CH$(CH):ENABLE:SP:RBV")
-
-record(bi, "$(P)$(Q)C$(C):CH$(CH):ENABLE")
-{
-    field(ZNAM, "NO")
-    field(ONAM, "YES")
-	field(INP, "$(P)$(Q)C$(C):ENABLE.B$(BIT) CP")
-}
+alias("$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE:SP", "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE")

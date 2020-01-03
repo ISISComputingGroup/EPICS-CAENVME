@@ -1,32 +1,33 @@
-record(longin, "$(P)$(Q)$(C):CARD")
+## output width for channels 0 to 7
+record(longout, "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:0_TO_7:SP")
 {
-    field(VAL, "$(C)")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x40")
 }
 
-record(longin, "$(P)$(Q)$(C):CARD:ID")
+alias("$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:0_TO_7:SP", "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:0_TO_7")
+
+## output width for channels 8 to 15
+record(longout, "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:8_TO_15:SP")
 {
-    field(VAL, "$(CI)")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x42")
 }
 
-record(ai, "$(P)$(Q)$(C)OUT:WIDTH:0-7")
+alias("$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:8_TO_15:SP", "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:8_TO_15")
+
+## pattern inhibit register, bitmask to enable/disable channels
+## individual bits set channel enable PVs in v895channel.template
+record(mbboDirect, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP")
 {
-    field(PREC, 3)
+    field(DTYP, "asynUInt32Digital")
+    field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x4A")
 }
 
-record(ai, "$(P)$(Q)$(C):OUT:WIDTH:8-15")
-{
-    field(INP, "@asyn($(PORT),$(C))WIDTH_8_15)
-    field(PREC, 3)
-}
+alias("$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP", "$(P)$(Q)CR$(CRATE):C$(C):ENABLE")
 
-record(mbbiDirect, "$(P)$(Q)$(C):ENABLE")
+record(bo, "$(P)$(Q)CR$(CRATE):C$(C):TESTPULSE:SP")
 {
-    field(DTYP, "asynInt32")
-    field(INP, "@asyn($(PORT),$(C))ENABLE)
-}
-
-record(mbboDirect, "$(P)$(Q)$(C):ENABLE:SP")
-{
-    field(DTYP, "asynInt32")
-    field(OUT, "@asyn($(PORT),$(C))ENABLE)
+    field(DTYP, "asynUInt32Digital")
+    field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x4C")
 }

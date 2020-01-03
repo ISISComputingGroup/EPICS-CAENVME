@@ -23,6 +23,8 @@ $(foreach dir, $(filter %App, $(DIRS)), \
 $(foreach dir, $(filter %Top, $(DIRS)), \
     $(eval $(dir)_DEPEND_DIRS += $(filter %Sup %App, $(DIRS))))
 
+CAENVMETestApp_DEPEND_DIRS += CAENVMEApp
+
 # iocBoot depends on all *App dirs
 iocBoot_DEPEND_DIRS += $(filter %App,$(DIRS))
 
