@@ -37,7 +37,7 @@ static const char *driverName="CAENVMEDriver";
 
 CAENVMEDriver::CAENVMEDriver(const char *portName, int crate, int board_id, unsigned base_address, unsigned card_increment, bool simulate)
    : asynPortDriver(portName, 
-                    0, /* maxAddr */ 
+                    16, /* maxAddr */ 
                     NUM_CAENVME_PARAMS,
                     asynInt32Mask | asynUInt32DigitalMask | asynDrvUserMask, /* Interface mask */
                     asynInt32Mask | asynUInt32DigitalMask,  /* Interrupt mask */
