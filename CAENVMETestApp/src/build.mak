@@ -28,6 +28,9 @@ $(APPNAME)_DBD += asyn.dbd
 
 $(APPNAME)_LIBS += CAENVME
 $(APPNAME)_LIBS += asyn
+ifdef ONCRPC
+$(APPNAME)_LIBS_WIN32 += oncrpc
+endif
 
 # _APPNAME__registerRecordDeviceDriver.cpp derives from _APPNAME_.dbd
 $(APPNAME)_SRCS += $(APPNAME)_registerRecordDeviceDriver.cpp
