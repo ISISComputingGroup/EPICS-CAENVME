@@ -37,7 +37,7 @@ static const char *driverName="CAENVMEDriver";
 
 CAENVMEDriver::CAENVMEDriver(const char *portName, int crate, int board_id, unsigned base_address, unsigned card_increment, bool simulate)
    : asynPortDriver(portName, 
-                    16, /* maxAddr */ 
+                    16, /* maxAddr, 16 channels per card */ 
                     NUM_CAENVME_PARAMS,
                     asynInt32Mask | asynUInt32DigitalMask | asynDrvUserMask, /* Interface mask */
                     asynInt32Mask | asynUInt32DigitalMask,  /* Interrupt mask */
@@ -49,13 +49,15 @@ CAENVMEDriver::CAENVMEDriver(const char *portName, int crate, int board_id, unsi
 {
 	if (card_increment == 0)
 	{
-		card_increment = 0x10000; // base_address is OK defaulting to 0x0
+		card_increment = 0x10000; // base_address is OK defaulting to 0x0, but card increemnt isn't
+		std::cerr << "CAENVME: card_increment of 0 not allowed, defaulting to 0x" << std::hex << card_increment << std::dec << std::endl;
 	}
     createParam(P_crateString, asynParamInt32, &P_crate);
     createParam(P_boardIdString, asynParamInt32, &P_boardId);
 	createParam(P_VMEWriteString, asynParamUInt32Digital, &P_VMEWrite);
 	setIntegerParam(P_crate, crate);
 	setIntegerParam(P_boardId, board_id);
+	std::cerr << "CAENVME: mapping crate " << crate << " to board " << board_id << " with VME base address 0x" << std::hex << m_baseAddress << " and card increment 0x" << card_increment << std::dec << std::endl;
 	m_vme = new CAENVMEWrapper(simulate, cvV1718, 0, board_id);
 }
 
@@ -71,14 +73,28 @@ struct VMEDetails
 asynStatus CAENVMEDriver::writeUInt32Digital(asynUser *pasynUser, epicsUInt32 value, epicsUInt32 mask)
 {
 	int card;
+	unsigned vme_addr;
     int function = pasynUser->reason;
 	if (function == P_VMEWrite)
 	{
 	    getAddress(pasynUser, &card);
 		VMEDetails* details = (VMEDetails*)pasynUser->userData;
 		epicsUInt16 value16 = value;
-		m_vme->writeCycle(m_baseAddress + m_cardIncrement * card + details->addr, &value16, cvA32_U_DATA, cvD16);
-		return asynSuccess;
+		vme_addr = m_baseAddress + m_cardIncrement * card + details->addr;
+		try 
+		{
+		    m_vme->writeCycle(vme_addr, &value16, cvA32_U_DATA, cvD16);
+            asynPrint(pasynUser, ASYN_TRACEIO_DRIVER, 
+              "VMEWRITE: address=0x%x value=%hu\n", vme_addr, value16);
+		    return asynSuccess;
+		}
+		catch(const std::exception& ex)
+		{
+            epicsSnprintf(pasynUser->errorMessage, pasynUser->errorMessageSize, 
+                  "VMEWRITE: Failed to write value=%hu to address=0x%x, error=%s", 
+                  value16, vme_addr, ex.what());
+		    return asynError;
+		}
 	}
 	else
 	{
@@ -91,6 +107,7 @@ asynStatus CAENVMEDriver::writeInt32(asynUser *pasynUser, epicsInt32 value)
 	return asynPortDriver::writeInt32(pasynUser, value);
 }
 
+// we overload drvUserCreate so we can pas arbitrary VME addresses via asyn parameters
 asynStatus CAENVMEDriver::drvUserCreate(asynUser *pasynUser, const char* drvInfo, const char** pptypeName, size_t* psize)
 {
    char *drvInfocpy;				//copy of drvInfo
@@ -98,39 +115,41 @@ asynStatus CAENVMEDriver::drvUserCreate(asynUser *pasynUser, const char* drvInfo
    char *tokSave = NULL;			//Remaining tokens
 
    if (strncmp(drvInfo, "VME", 3) == 0)
-     {
+   {
      //take a copy of drvInfo and split into tokens
      drvInfocpy = epicsStrDup((const char *)drvInfo);
 	 // first token is command
      charstr = epicsStrtok_r((char *)drvInfocpy, "_", &tokSave);
-     if (!strcmp(charstr, P_VMEWriteString))
+     if (!strcmp(charstr, P_VMEWriteString)) {
         pasynUser->reason = P_VMEWrite;
+	 }
      //Second token is address
      charstr = epicsStrtok_r(NULL, "_", &tokSave);
-     if (charstr != NULL)
+     if (charstr != NULL) {
         pasynUser->userData = new VMEDetails(charstr);
+	 }
      free(drvInfocpy);
      return asynSuccess;
-     }
-  else
-     {
+   }
+   else
+   {
      return asynPortDriver::drvUserCreate(pasynUser, drvInfo, pptypeName, psize);
-     }
+   }
 }
 
 asynStatus CAENVMEDriver::drvUserDestroy(asynUser *pasynUser)
 {
    const char *functionName = "drvUserDestroy";
    if ( pasynUser->reason == P_VMEWrite )
-      {
+   {
       delete pasynUser->userData;
       pasynUser->userData = NULL;
       return(asynSuccess);
-      }
-  else
-      {
+   }
+   else
+   {
       return asynPortDriver::drvUserDestroy(pasynUser);
-      }
+   }
 }
 
 void CAENVMEDriver::report(FILE *f, int details)

@@ -17,7 +17,7 @@ CAENVMETest_registerRecordDeviceDriver pdbbase
 epicsEnvSet("CAEMVMESIM", 1)
 CAENVMEConfigure("CRATE0", 0, 0, 0, 0x10000, $(CAEMVMESIM))
 
-## Load our record instances
+## Load our record instances - here for one crate with two cards
 dbLoadRecords("$(TOP)/db/v895Crate.db","P=$(MYPVPREFIX),Q=CAENVMETEST:,CRATE=0,PORT=CRATE0")
 dbLoadRecords("$(TOP)/db/v895Card.db","P=$(MYPVPREFIX),Q=CAENVMETEST:,CRATE=0,PORT=CRATE0,C=0")
 dbLoadRecords("$(TOP)/db/v895Card.db","P=$(MYPVPREFIX),Q=CAENVMETEST:,CRATE=0,PORT=CRATE0,C=1")
