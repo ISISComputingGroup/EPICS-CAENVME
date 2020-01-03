@@ -38,14 +38,6 @@
 # include <config.h>
 #endif
 
-#if !defined __STDC__ || !__STDC__
-/* This is a separate conditional since some stdc systems
-   reject `defined (const)'.  */
-# ifndef const
-#  define const
-# endif
-#endif
-
 #include <stdio.h>
 
 /* Comment out all this code if we are using the GNU C Library, and are not
@@ -207,13 +199,6 @@ static char *posixly_correct;
 
 /* Avoid depending on library functions or files
    whose names are inconsistent.  */
-
-#ifndef getenv
-extern char *getenv ();
-#endif
-#ifndef strncmp
-extern int strncmp ();
-#endif
 
 static char *
 my_index (str, chr)
