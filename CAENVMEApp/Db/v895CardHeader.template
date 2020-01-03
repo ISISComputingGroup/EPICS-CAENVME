@@ -1,0 +1,32 @@
+record(longin, "$(P)$(Q)$(C):CARD")
+{
+    field(VAL, "$(C)")
+}
+
+record(longin, "$(P)$(Q)$(C):CARD:ID")
+{
+    field(VAL, "$(CI)")
+}
+
+record(ai, "$(P)$(Q)$(C)OUT:WIDTH:0-7")
+{
+    field(PREC, 3)
+}
+
+record(ai, "$(P)$(Q)$(C):OUT:WIDTH:8-15")
+{
+    field(INP, "@asyn($(PORT),$(C))WIDTH_8_15)
+    field(PREC, 3)
+}
+
+record(mbbiDirect, "$(P)$(Q)$(C):ENABLE")
+{
+    field(DTYP, "asynInt32")
+    field(INP, "@asyn($(PORT),$(C))ENABLE)
+}
+
+record(mbboDirect, "$(P)$(Q)$(C):ENABLE:SP")
+{
+    field(DTYP, "asynInt32")
+    field(OUT, "@asyn($(PORT),$(C))ENABLE)
+}

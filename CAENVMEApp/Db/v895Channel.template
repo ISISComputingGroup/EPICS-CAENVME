@@ -1,0 +1,34 @@
+record(ao, "$(P)$(Q)C$(C):CH$(CH):THOLD:SP")
+{
+    field(DTYP, "asynFloat64")
+    field(OUT, "@asyn($(PORT),$(C))THOLD_$(CH))
+    field(PREC, 3)
+    field(EGU, "mV")
+}
+
+alias("$(P)$(Q)C$(C):CH$(CH):THOLD:SP", "$(P)$(Q)C$(C):CH$(CH):THOLD:SP:RBV")
+
+record(ai, "$(P)$(Q)C$(C):CH$(CH):THOLD")
+{
+    field(DTYP, "asynFloat64")
+    field(INP, "@asyn($(PORT),$(C))THOLD_$(CH))
+	field(SCAN, "I/O Intr")
+    field(PREC, 3)
+    field(EGU, "mV")
+}
+
+record(bo, "$(P)$(Q)C$(C):CH$(CH):ENABLE:SP")
+{
+    field(ZNAM, "NO")
+    field(ONAM, "YES")
+	field(OUT, "$(P)$(Q)C$(C):ENABLE:SP.B$(BIT) PP")
+}
+
+alias("$(P)$(Q)C$(C):CH$(CH):ENABLE:SP", "$(P)$(Q)C$(C):CH$(CH):ENABLE:SP:RBV")
+
+record(bi, "$(P)$(Q)C$(C):CH$(CH):ENABLE")
+{
+    field(ZNAM, "NO")
+    field(ONAM, "YES")
+	field(INP, "$(P)$(Q)C$(C):ENABLE.B$(BIT) CP")
+}

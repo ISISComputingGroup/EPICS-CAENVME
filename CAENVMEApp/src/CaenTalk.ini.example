@@ -1,0 +1,14 @@
+# This file is used by CaenTalk.exe to map between a board number specified by the user (via -bN)
+# and the "board number" used by the CAEN crate, which may not be numbered the way we wanted.
+# "my_board_number" is set via -bN on command line, "caen_board_number" is then passed as the Device parameter to CAENVME_Init()
+#
+# This file also specifies the addressing scheme for the cards (vme_address = base_address + card * card_increment + register_address)
+# if not present, then no board number mapping is done, base_address=0x0 and card_increment=0x10000 (card << 16)
+#
+# $Id$
+#  
+# my_board_number  caen_board_number  base_address  card_increment
+#
+0x1  0x1  0x12010000  0x10000
+0x2  0x2  0x11010000  0x10000
+0x3  0x0  0x13010000  0x10000

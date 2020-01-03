@@ -1,0 +1,10 @@
+# optional extra local definitions here
+-include $(TOP)/configure/RELEASE.private
+
+# Macros required for basic ioc/stream device
+ASYN=$(SUPPORT)/asyn/master
+ONCRPC=$(SUPPORT)/oncrpc/master
+
+include $(TOP)/../../../ISIS_CONFIG
+-include $(TOP)/../../../ISIS_CONFIG.$(EPICS_HOST_ARCH)
+
