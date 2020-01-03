@@ -15,6 +15,7 @@ public:
     virtual asynStatus writeUInt32Digital(asynUser *pasynUser, epicsUInt32 value, epicsUInt32 mask);
     virtual asynStatus drvUserCreate(asynUser *pasynUser, const char* drvInfo, const char** pptypeName, size_t* psize);
 	virtual asynStatus drvUserDestroy(asynUser *pasynUser);
+	virtual void report(FILE *f, int details);
 	
 private:
     CAENVMEWrapper* m_vme;

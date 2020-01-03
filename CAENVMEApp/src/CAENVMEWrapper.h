@@ -27,6 +27,7 @@ class CAENVMEWrapper
     void writeSequence(CVDataWidth DW, uint32_t address, uint32_t data, CVAddressModifier AM, int count, int data_step);
     void writeArray(CVDataWidth DW, uint32_t address, const void* data, CVAddressModifier AM, int count);
     void readArray(CVDataWidth DW, uint32_t address, void* data, CVAddressModifier AM, int count);
+	void report(FILE* f);
 };
 
 

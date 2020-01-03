@@ -1,5 +1,6 @@
 #include <map>
 #include <string>
+#include <iostream>
 
 #include "CAENVMEWrapper.h"
 
@@ -20,7 +21,11 @@
 
 	CAENVMEWrapper::CAENVMEWrapper(bool simulate, CVBoardTypes BdType, short Link, short BdNum) : m_simulate(simulate), m_handle(0)
 	{
-		if (!m_simulate)
+		if (simulate)
+		{
+			std::cerr << "Creating simlated CAENVME" << std::endl;
+		}
+		else
 		{
 			CHECK_RET(CAENVME_Init(BdType, Link, BdNum, &m_handle));
 		}
@@ -153,6 +158,7 @@
 		else
 		{
 			m_simDataMap[address] = getData(data, DW);
+			std::cerr << "CAENSIM: writing " << m_simDataMap[address] << " to address 0x" << std::hex << address << std::dec << std::endl;  
 		}
     }
 
@@ -192,4 +198,11 @@ void CAENVMEWrapper::readArray(CVDataWidth DW, uint32_t address, void* data,
    }
 }
 
+void CAENVMEWrapper::report(FILE* f)
+{
+	for(std::map<uint32_t,uint64_t>::const_iterator it = m_simDataMap.begin(); it != m_simDataMap.end(); ++it)
+	{
+		fprintf(f, "CAENSIM: address 0x%x has value %llu\n", it->first, (unsigned long long)it->second);
+	}
+}	
 

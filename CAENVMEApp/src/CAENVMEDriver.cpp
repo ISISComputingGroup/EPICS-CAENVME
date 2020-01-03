@@ -76,7 +76,8 @@ asynStatus CAENVMEDriver::writeUInt32Digital(asynUser *pasynUser, epicsUInt32 va
 	{
 	    getAddress(pasynUser, &card);
 		VMEDetails* details = (VMEDetails*)pasynUser->userData;
-		m_vme->writeCycle(m_baseAddress + m_cardIncrement * card + details->addr, &value, cvA32_U_DATA, cvD16);
+		epicsUInt16 value16 = value;
+		m_vme->writeCycle(m_baseAddress + m_cardIncrement * card + details->addr, &value16, cvA32_U_DATA, cvD16);
 		return asynSuccess;
 	}
 	else
@@ -131,7 +132,12 @@ asynStatus CAENVMEDriver::drvUserDestroy(asynUser *pasynUser)
       return asynPortDriver::drvUserDestroy(pasynUser);
       }
 }
-	
+
+void CAENVMEDriver::report(FILE *f, int details)
+{
+	m_vme->report(f);
+}
+
 extern "C" {
 
 /// \param[in] portName @copydoc initArg0
