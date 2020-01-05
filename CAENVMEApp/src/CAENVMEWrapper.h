@@ -3,13 +3,14 @@
 
 #include "CAENVMElib.h"
 
+/// class to manage interaction with vendor CAENVMElib
 class CAENVMEWrapper
 {
-	bool m_simulate;
-	int32_t m_handle;
-    std::map<uint32_t,uint64_t> m_simDataMap;
+	bool m_simulate; ///< true if we in VME simulation mode
+	int32_t m_handle; ///< reference returned by underlying CAENVMElib library
+    std::map<uint32_t,uint64_t> m_simDataMap; ///< holds address -> value mapping in simulation mode
 
-    static const char* decodeError(int code);
+    static const char* decodeError(int code); ///< decode error number returned by vendor CAENVMElib
 	static uint64_t getData(const void *data, CVDataWidth DW);
 	static void setData(uint64_t value, void *data, CVDataWidth DW);
 	int dataSizeBytes(CVDataWidth DW);

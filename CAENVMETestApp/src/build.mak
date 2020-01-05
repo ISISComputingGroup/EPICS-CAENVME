@@ -20,14 +20,20 @@ $(APPNAME)_DBD += base.dbd
 ## ISIS standard dbd ##
 $(APPNAME)_DBD += CAENVME.dbd
 $(APPNAME)_DBD += asyn.dbd
+$(APPNAME)_DBD += busySupport.dbd
+$(APPNAME)_DBD += calcSupport.dbd
+$(APPNAME)_DBD += asSupport.dbd
 
 # Add all the support libraries needed by this IOC
 
 ## Add additional libraries here ##
 #$(APPNAME)_LIBS += xxx
 
-$(APPNAME)_LIBS += CAENVME
+$(APPNAME)_LIBS += CAENVME CAENVMElib
 $(APPNAME)_LIBS += asyn
+$(APPNAME)_LIBS += autosave
+$(APPNAME)_LIBS += busy
+$(APPNAME)_LIBS += calc sscan
 ifdef ONCRPC
 $(APPNAME)_LIBS_WIN32 += oncrpc
 endif

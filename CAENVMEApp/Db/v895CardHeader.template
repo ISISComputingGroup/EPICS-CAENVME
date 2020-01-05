@@ -1,17 +1,25 @@
-## output width for channels 0 to 7
+## output width for channels 0 to 7, write 0 to 255 to give a range of 5 to 40ns in a non-linear way
 record(longout, "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:0_TO_7:SP")
 {
     field(DTYP, "asynUInt32Digital")
     field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x40")
+	field(DRVL, 0)
+	field(DRVH, 255)
+    info(autosaveFields, "VAL")
+    info(vmeconfig, "VAL")
 }
 
 alias("$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:0_TO_7:SP", "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:0_TO_7")
 
-## output width for channels 8 to 15
+## output width for channels 8 to 15, write 0 to 255 to give a range of 5 to 40ns in a non-linear way
 record(longout, "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:8_TO_15:SP")
 {
     field(DTYP, "asynUInt32Digital")
     field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x42")
+	field(DRVL, 0)
+	field(DRVH, 255)
+    info(autosaveFields, "VAL")
+    info(vmeconfig, "VAL")
 }
 
 alias("$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:8_TO_15:SP", "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:8_TO_15")
@@ -22,6 +30,8 @@ record(mbboDirect, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP")
 {
     field(DTYP, "asynUInt32Digital")
     field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x4A")
+    info(autosaveFields, "VAL")
+    info(vmeconfig, "VAL")
 }
 
 alias("$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP", "$(P)$(Q)CR$(CRATE):C$(C):ENABLE")
@@ -30,4 +40,28 @@ record(bo, "$(P)$(Q)CR$(CRATE):C$(C):TESTPULSE:SP")
 {
     field(DTYP, "asynUInt32Digital")
     field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x4C")
+}
+
+## card module indentification words
+
+## this is a fixed code 0xFAF5 = 64245 decimal
+record(longin, "$(P)$(Q)CR$(CRATE):C$(C):MOD_ID_1")
+{
+    field(DTYP, "asynUInt32Digital")
+    field(INP, "@asynMask($(PORT),$(C),0xffff)VMEREAD_0xFA")
+}
+
+## manufacturer and board/module type
+## for a v895 this should be 2132 (decimal) - see manual for card
+record(longin, "$(P)$(Q)CR$(CRATE):C$(C):MOD_ID_2")
+{
+    field(DTYP, "asynUInt32Digital")
+    field(INP, "@asynMask($(PORT),$(C),0xffff)VMEREAD_0xFC")
+}
+
+## version and serial number
+record(longin, "$(P)$(Q)CR$(CRATE):C$(C):MOD_ID_3")
+{
+    field(DTYP, "asynUInt32Digital")
+    field(INP, "@asynMask($(PORT),$(C),0xffff)VMEREAD_0xFE")
 }

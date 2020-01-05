@@ -1,4 +1,5 @@
 #include <map>
+#include <bitset>
 #include <string>
 #include <iostream>
 
@@ -14,16 +15,19 @@
 	     throw std::runtime_error(errmsg); \
 	}
 
-    const char* CAENVMEWrapper::decodeError(int code)
-	{
-        return CAENVME_DecodeError(static_cast<CVErrorCodes>(code));
-	}
+const char* CAENVMEWrapper::decodeError(int code)
+{
+    return CAENVME_DecodeError(static_cast<CVErrorCodes>(code));
+}
 
 	CAENVMEWrapper::CAENVMEWrapper(bool simulate, CVBoardTypes BdType, short Link, short BdNum) : m_simulate(simulate), m_handle(0)
 	{
 		if (simulate)
 		{
-			std::cerr << "Creating simlated CAENVME" << std::endl;
+			std::cerr << "Creating simlated CAENVME for v895 module" << std::endl;
+			m_simDataMap[0xFA] = 0xFAF5; // fixed code
+			std::bitset<16> mod_code(std::string("0000100001010100")); // Fixed manufacturer and model number for CAEN v895
+			m_simDataMap[0xFC] = mod_code.to_ulong();
 		}
 		else
 		{
@@ -200,9 +204,12 @@ void CAENVMEWrapper::readArray(CVDataWidth DW, uint32_t address, void* data,
 
 void CAENVMEWrapper::report(FILE* f)
 {
-	for(std::map<uint32_t,uint64_t>::const_iterator it = m_simDataMap.begin(); it != m_simDataMap.end(); ++it)
+	if (m_simulate)
 	{
-		fprintf(f, "CAENSIM: address 0x%x has value %llu\n", it->first, (unsigned long long)it->second);
+	    for(std::map<uint32_t,uint64_t>::const_iterator it = m_simDataMap.begin(); it != m_simDataMap.end(); ++it)
+	    {
+		    fprintf(f, "CAENSIM: address 0x%x has value %llu\n", it->first, (unsigned long long)it->second);
+	    }
 	}
 }	
 

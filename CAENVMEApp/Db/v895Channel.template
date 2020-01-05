@@ -1,8 +1,13 @@
+## 8bit DAC to set threshold
 record(longout, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD:SP")
 {
     field(DTYP, "asynUInt32Digital")
     field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_$(VMEADDR)")
     field(EGU, "mV")
+	field(DRVL, 1)
+	field(DRVH, 255)
+    info(autosaveFields, "VAL")
+    info(vmeconfig, "VAL")
 }
 
 alias("$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD:SP", "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD")
@@ -12,6 +17,8 @@ record(bo, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE:SP")
     field(ZNAM, "NO")
     field(ONAM, "YES")
 	field(OUT, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP.B$(BIT) PP")
+    info(autosaveFields, "VAL")
+    info(vmeconfig, "VAL")
 }
 
 alias("$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE:SP", "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE")

@@ -4,6 +4,10 @@
 # Macros required for basic ioc/stream device
 ASYN=$(SUPPORT)/asyn/master
 ONCRPC=$(SUPPORT)/oncrpc/master
+AUTOSAVE=$(SUPPORT)/autosave/master
+BUSY=$(SUPPORT)/busy/master
+CALC=$(SUPPORT)/calc/master
+SSCAN=$(SUPPORT)/sscan/master
 
 include $(TOP)/../../../ISIS_CONFIG
 -include $(TOP)/../../../ISIS_CONFIG.$(EPICS_HOST_ARCH)

@@ -14,3 +14,5 @@ relPaths.sh
 *.tags
 /doc/
 .project
+info_positions.req
+info_settings.req

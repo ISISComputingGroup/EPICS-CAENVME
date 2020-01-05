@@ -55,6 +55,7 @@ CAENVMEDriver::CAENVMEDriver(const char *portName, int crate, int board_id, unsi
     createParam(P_crateString, asynParamInt32, &P_crate);
     createParam(P_boardIdString, asynParamInt32, &P_boardId);
 	createParam(P_VMEWriteString, asynParamUInt32Digital, &P_VMEWrite);
+	createParam(P_VMEReadString, asynParamUInt32Digital, &P_VMERead);
 	setIntegerParam(P_crate, crate);
 	setIntegerParam(P_boardId, board_id);
 	std::cerr << "CAENVME: mapping crate " << crate << " to board " << board_id << " with VME base address 0x" << std::hex << m_baseAddress << " and card increment 0x" << card_increment << std::dec << std::endl;
@@ -102,31 +103,67 @@ asynStatus CAENVMEDriver::writeUInt32Digital(asynUser *pasynUser, epicsUInt32 va
 	}
 }
 
-asynStatus CAENVMEDriver::writeInt32(asynUser *pasynUser, epicsInt32 value)
+asynStatus CAENVMEDriver::readUInt32Digital(asynUser *pasynUser, epicsUInt32 *value, epicsUInt32 mask)
 {
-	return asynPortDriver::writeInt32(pasynUser, value);
+	int card;
+	unsigned vme_addr;
+    int function = pasynUser->reason;
+	if (function == P_VMERead)
+	{
+	    getAddress(pasynUser, &card);
+		VMEDetails* details = (VMEDetails*)pasynUser->userData;
+		epicsUInt16 value16;
+		vme_addr = m_baseAddress + m_cardIncrement * card + details->addr;
+		try 
+		{
+		    m_vme->readCycle(vme_addr, &value16, cvA32_U_DATA, cvD16);
+            asynPrint(pasynUser, ASYN_TRACEIO_DRIVER, 
+              "VMEREAD: address=0x%x value=%hu\n", vme_addr, value16);
+			*value = value16;
+		    return asynSuccess;
+		}
+		catch(const std::exception& ex)
+		{
+            epicsSnprintf(pasynUser->errorMessage, pasynUser->errorMessageSize, 
+                  "VMEREAD: Failed to read value from address=0x%x, error=%s", 
+                  vme_addr, ex.what());
+		    return asynError;
+		}
+	}
+	else
+	{
+		return asynPortDriver::readUInt32Digital(pasynUser, value, mask);
+	}
 }
 
 // we overload drvUserCreate so we can pas arbitrary VME addresses via asyn parameters
 asynStatus CAENVMEDriver::drvUserCreate(asynUser *pasynUser, const char* drvInfo, const char** pptypeName, size_t* psize)
 {
    char *drvInfocpy;				//copy of drvInfo
-   char *charstr;				//The current token
+   char *charstr;				    //The current token
    char *tokSave = NULL;			//Remaining tokens
 
-   if (strncmp(drvInfo, "VME", 3) == 0)
+   if (strncmp(drvInfo, "VME", 3) == 0) // our special commands all start with VME prefix
    {
-     //take a copy of drvInfo and split into tokens
+     // take a copy of drvInfo and split into tokens
      drvInfocpy = epicsStrDup((const char *)drvInfo);
 	 // first token is command
      charstr = epicsStrtok_r((char *)drvInfocpy, "_", &tokSave);
      if (!strcmp(charstr, P_VMEWriteString)) {
-        pasynUser->reason = P_VMEWrite;
+         pasynUser->reason = P_VMEWrite;
+	 } else if (!strcmp(charstr, P_VMEReadString)) {
+         pasynUser->reason = P_VMERead;
+	 } else {
+         free(drvInfocpy);
+         return asynError;
 	 }
-     //Second token is address
+     // Second token is address
      charstr = epicsStrtok_r(NULL, "_", &tokSave);
      if (charstr != NULL) {
-        pasynUser->userData = new VMEDetails(charstr);
+         pasynUser->userData = new VMEDetails(charstr);
+	 } else {
+         free(drvInfocpy);
+         return asynError;
 	 }
      free(drvInfocpy);
      return asynSuccess;
