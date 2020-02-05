@@ -60,6 +60,7 @@ CAENVMEDriver::CAENVMEDriver(const char *portName, int crate, int board_id, unsi
 	setIntegerParam(P_boardId, board_id);
 	std::cerr << "CAENVME: mapping crate " << crate << " to board " << board_id << " with VME base address 0x" << std::hex << m_baseAddress << " and card increment 0x" << card_increment << std::dec << std::endl;
 	m_vme = new CAENVMEWrapper(simulate, cvV1718, 0, board_id);
+	m_vme->report(stdout);
 }
 
 struct VMEDetails

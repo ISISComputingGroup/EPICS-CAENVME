@@ -20,7 +20,7 @@ const char* CAENVMEWrapper::decodeError(int code)
     return CAENVME_DecodeError(static_cast<CVErrorCodes>(code));
 }
 
-	CAENVMEWrapper::CAENVMEWrapper(bool simulate, CVBoardTypes BdType, short Link, short BdNum) : m_simulate(simulate), m_handle(0)
+	CAENVMEWrapper::CAENVMEWrapper(bool simulate, CVBoardTypes BdType, short Link, short BdNum) : m_simulate(simulate), m_BdType(BdType), m_BdNum(BdNum), m_handle(0)
 	{
 		if (simulate)
 		{
@@ -204,6 +204,10 @@ void CAENVMEWrapper::readArray(CVDataWidth DW, uint32_t address, void* data,
 
 void CAENVMEWrapper::report(FILE* f)
 {
+	fprintf(f, "CAENVMEWrapper: connected to board number %d (board type: %d)\n", (int)m_BdNum, (int)m_BdType);
+	fprintf(f, "CAENVMEWrapper: swRelease = %s\n", swRelease().c_str());
+	fprintf(f, "CAENVMEWrapper: boardFWRelease = %s\n", boardFWRelease().c_str());
+	fprintf(f, "CAENVMEWrapper: driverRelease = %s\n", driverRelease().c_str());
 	if (m_simulate)
 	{
 	    for(std::map<uint32_t,uint64_t>::const_iterator it = m_simDataMap.begin(); it != m_simDataMap.end(); ++it)

@@ -5,6 +5,8 @@ record(longout, "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:0_TO_7:SP")
     field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x40")
 	field(DRVL, 0)
 	field(DRVH, 255)
+	field(VAL, 0)
+	field(PINI, "YES")
     info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
 }
@@ -18,6 +20,8 @@ record(longout, "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:8_TO_15:SP")
     field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x42")
 	field(DRVL, 0)
 	field(DRVH, 255)
+	field(VAL, 0)
+	field(PINI, "YES")
     info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
 }
@@ -30,8 +34,6 @@ record(mbboDirect, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP")
 {
     field(DTYP, "asynUInt32Digital")
     field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x4A")
-    info(autosaveFields, "VAL")
-    info(vmeconfig, "VAL")
 }
 
 alias("$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP", "$(P)$(Q)CR$(CRATE):C$(C):ENABLE")
@@ -49,6 +51,7 @@ record(longin, "$(P)$(Q)CR$(CRATE):C$(C):MOD_ID_1")
 {
     field(DTYP, "asynUInt32Digital")
     field(INP, "@asynMask($(PORT),$(C),0xffff)VMEREAD_0xFA")
+	field(PINI, "YES")
 }
 
 ## manufacturer and board/module type
@@ -57,6 +60,7 @@ record(longin, "$(P)$(Q)CR$(CRATE):C$(C):MOD_ID_2")
 {
     field(DTYP, "asynUInt32Digital")
     field(INP, "@asynMask($(PORT),$(C),0xffff)VMEREAD_0xFC")
+	field(PINI, "YES")
 }
 
 ## version and serial number
@@ -64,4 +68,5 @@ record(longin, "$(P)$(Q)CR$(CRATE):C$(C):MOD_ID_3")
 {
     field(DTYP, "asynUInt32Digital")
     field(INP, "@asynMask($(PORT),$(C),0xffff)VMEREAD_0xFE")
+	field(PINI, "YES")
 }

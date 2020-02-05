@@ -7,6 +7,8 @@
 class CAENVMEWrapper
 {
 	bool m_simulate; ///< true if we in VME simulation mode
+	CVBoardTypes m_BdType;
+	short m_BdNum;
 	int32_t m_handle; ///< reference returned by underlying CAENVMElib library
     std::map<uint32_t,uint64_t> m_simDataMap; ///< holds address -> value mapping in simulation mode
 
