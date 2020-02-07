@@ -1,0 +1,1464 @@
+<?xml version='1.0' standalone='yes' ?>
+<LVData xmlns="http://www.ni.com/LVData">
+<Version>10.0f2</Version>
+<Array>
+<Name>Array</Name>
+<Dimsize>7</Dimsize>
+<Cluster>
+<Name>Cluster</Name>
+<NumElts>19</NumElts>
+<U8>
+<Name>Card Number</Name>
+<Val>0</Val>
+</U8>
+<Cluster>
+<Name>Channel 0</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 1</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 2</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 3</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 4</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 5</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 6</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 7</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 8</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 9</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 10</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 11</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 12</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 13</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 14</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 15</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<U8>
+<Name>Output Width (0-7)</Name>
+<Val>0</Val>
+</U8>
+<U8>
+<Name>Output Width (8-15)</Name>
+<Val>0</Val>
+</U8>
+</Cluster>
+<Cluster>
+<Name>Cluster</Name>
+<NumElts>19</NumElts>
+<U8>
+<Name>Card Number</Name>
+<Val>1</Val>
+</U8>
+<Cluster>
+<Name>Channel 0</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 1</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 2</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 3</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 4</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 5</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 6</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 7</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 8</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 9</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 10</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 11</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 12</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 13</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 14</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 15</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<U8>
+<Name>Output Width (0-7)</Name>
+<Val>0</Val>
+</U8>
+<U8>
+<Name>Output Width (8-15)</Name>
+<Val>0</Val>
+</U8>
+</Cluster>
+<Cluster>
+<Name>Cluster</Name>
+<NumElts>19</NumElts>
+<U8>
+<Name>Card Number</Name>
+<Val>2</Val>
+</U8>
+<Cluster>
+<Name>Channel 0</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 1</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 2</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 3</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 4</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 5</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 6</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 7</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 8</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 9</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 10</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 11</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 12</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 13</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 14</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 15</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<U8>
+<Name>Output Width (0-7)</Name>
+<Val>0</Val>
+</U8>
+<U8>
+<Name>Output Width (8-15)</Name>
+<Val>0</Val>
+</U8>
+</Cluster>
+<Cluster>
+<Name>Cluster</Name>
+<NumElts>19</NumElts>
+<U8>
+<Name>Card Number</Name>
+<Val>3</Val>
+</U8>
+<Cluster>
+<Name>Channel 0</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 1</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 2</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 3</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 4</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 5</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 6</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 7</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 8</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 9</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 10</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 11</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 12</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 13</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 14</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 15</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<U8>
+<Name>Output Width (0-7)</Name>
+<Val>0</Val>
+</U8>
+<U8>
+<Name>Output Width (8-15)</Name>
+<Val>0</Val>
+</U8>
+</Cluster>
+<Cluster>
+<Name>Cluster</Name>
+<NumElts>19</NumElts>
+<U8>
+<Name>Card Number</Name>
+<Val>4</Val>
+</U8>
+<Cluster>
+<Name>Channel 0</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 1</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 2</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 3</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 4</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 5</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 6</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 7</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 8</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 9</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 10</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 11</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 12</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 13</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 14</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 15</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<U8>
+<Name>Output Width (0-7)</Name>
+<Val>0</Val>
+</U8>
+<U8>
+<Name>Output Width (8-15)</Name>
+<Val>0</Val>
+</U8>
+</Cluster>
+<Cluster>
+<Name>Cluster</Name>
+<NumElts>19</NumElts>
+<U8>
+<Name>Card Number</Name>
+<Val>5</Val>
+</U8>
+<Cluster>
+<Name>Channel 0</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 1</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 2</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 3</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 4</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 5</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 6</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 7</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 8</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 9</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 10</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 11</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 12</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 13</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>75</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 14</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 15</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>50</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<U8>
+<Name>Output Width (0-7)</Name>
+<Val>0</Val>
+</U8>
+<U8>
+<Name>Output Width (8-15)</Name>
+<Val>0</Val>
+</U8>
+</Cluster>
+<Cluster>
+<Name>Cluster</Name>
+<NumElts>19</NumElts>
+<U8>
+<Name>Card Number</Name>
+<Val>6</Val>
+</U8>
+<Cluster>
+<Name>Channel 0</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>60</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 1</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>30</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 2</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>180</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>1</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 3</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 4</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 5</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 6</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 7</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 8</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 9</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 10</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 11</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 12</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 13</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 14</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>Channel 15</Name>
+<NumElts>2</NumElts>
+<U8>
+<Name>Threshold (mV)</Name>
+<Val>10</Val>
+</U8>
+<Boolean>
+<Name>Enabled</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<U8>
+<Name>Output Width (0-7)</Name>
+<Val>0</Val>
+</U8>
+<U8>
+<Name>Output Width (8-15)</Name>
+<Val>0</Val>
+</U8>
+</Cluster>
+</Array>
+</LVData>
