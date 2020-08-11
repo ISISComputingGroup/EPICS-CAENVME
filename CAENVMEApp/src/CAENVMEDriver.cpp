@@ -87,6 +87,7 @@ asynStatus CAENVMEDriver::writeUInt32Digital(asynUser *pasynUser, epicsUInt32 va
         try 
         {
             m_vme->writeCycle(vme_addr, &value16, cvA32_U_DATA, cvD16);
+            std::cerr << "VMEWRITE: card=" << card << " address=" << vme_addr << " value=" << value16 << std::endl;
             asynPrint(pasynUser, ASYN_TRACEIO_DRIVER, 
               "VMEWRITE: card=%d address=0x%x value=%hu\n", card, vme_addr, value16);
             return asynSuccess;
@@ -101,6 +102,7 @@ asynStatus CAENVMEDriver::writeUInt32Digital(asynUser *pasynUser, epicsUInt32 va
     }
     else
     {
+        std::cerr << "VMEWRITE: unexpected card=" << card << " reason=" << function << std::endl;
         return asynPortDriver::writeUInt32Digital(pasynUser, value, mask);
     }
 }
@@ -158,6 +160,7 @@ asynStatus CAENVMEDriver::drvUserCreate(asynUser *pasynUser, const char* drvInfo
          pasynUser->reason = P_VMERead;
      } else {
          free(drvInfocpy);
+         std::cerr << "drvUserCreate: error1" << std::endl;
          return asynError;
      }
      // Second token is address
@@ -167,7 +170,8 @@ asynStatus CAENVMEDriver::drvUserCreate(asynUser *pasynUser, const char* drvInfo
      } else {
          pasynUser->userData = NULL;
          free(drvInfocpy);
-         return asynError;
+         std::cerr << "drvUserCreate: error2" << std::endl;
+        return asynError;
      }
      free(drvInfocpy);
      return asynSuccess;
