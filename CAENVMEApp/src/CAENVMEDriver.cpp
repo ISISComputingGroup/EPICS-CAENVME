@@ -87,7 +87,7 @@ asynStatus CAENVMEDriver::writeUInt32Digital(asynUser *pasynUser, epicsUInt32 va
         try 
         {
             m_vme->writeCycle(vme_addr, &value16, cvA32_U_DATA, cvD16);
-            std::cerr << "VMEWRITE: card=" << card << " address=" << vme_addr << " value=" << value16 << std::endl;
+            std::cerr << "VMEWRITE: card=" << card << " address=0x" << std::hex << vme_addr << std::dec << " value=" << value16 << std::endl;
             asynPrint(pasynUser, ASYN_TRACEIO_DRIVER, 
               "VMEWRITE: card=%d address=0x%x value=%hu\n", card, vme_addr, value16);
             return asynSuccess;

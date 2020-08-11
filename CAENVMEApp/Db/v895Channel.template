@@ -10,17 +10,19 @@ record(longout, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD:SP")
 	field(VAL, 128)
     info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
+	field(FLNK, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE:SP")
 }
 
 alias("$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD:SP", "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD")
 
+## we set bit NPP as we have a lot running due to PINI. The value is 
+## synced later
 record(bo, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE:SP")
 {
     field(ZNAM, "NO")
     field(ONAM, "YES")
-	field(OUT, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP.B$(BIT) PP")
+	field(OUT, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP.B$(BIT) NPP")
 	field(VAL, 0)
-	field(PINI, "YES")
     info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
 }
