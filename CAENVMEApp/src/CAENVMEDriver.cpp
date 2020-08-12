@@ -160,7 +160,7 @@ asynStatus CAENVMEDriver::drvUserCreate(asynUser *pasynUser, const char* drvInfo
          pasynUser->reason = P_VMERead;
      } else {
          free(drvInfocpy);
-         std::cerr << "drvUserCreate: error1" << std::endl;
+         std::cerr << "drvUserCreate: unknown reason " << drvInfo << std::endl;
          return asynError;
      }
      // Second token is address
@@ -170,7 +170,7 @@ asynStatus CAENVMEDriver::drvUserCreate(asynUser *pasynUser, const char* drvInfo
      } else {
          pasynUser->userData = NULL;
          free(drvInfocpy);
-         std::cerr << "drvUserCreate: error2" << std::endl;
+         std::cerr << "drvUserCreate: unknown format " << drvInfo << std::endl;
         return asynError;
      }
      free(drvInfocpy);
