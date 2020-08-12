@@ -55,6 +55,14 @@ record(longout, "$(P)$(Q)CR$(CRATE):C$(C):_ENABLE_SEND")
     field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x4A")
 }
 
+## for use in setting an explicit value to the register, it seems that
+## writing directly to VAL of the mbboDirect above does not work
+record(longout, "$(P)$(Q)CR$(CRATE):C$(C):_ENABLE:SP")
+{
+    field(DTYP, "asynUInt32Digital")
+    field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x4A")
+}
+
 record(bo, "$(P)$(Q)CR$(CRATE):C$(C):TESTPULSE:SP")
 {
     field(DTYP, "asynUInt32Digital")
