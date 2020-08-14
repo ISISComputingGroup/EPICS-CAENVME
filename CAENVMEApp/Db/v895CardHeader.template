@@ -32,11 +32,36 @@ alias("$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:8_TO_15:SP", "$(P)$(Q)CR$(CRATE):C$(C)
 ## individual bits set channel enable PVs in v895channel.template
 record(mbboDirect, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP")
 {
-    field(DTYP, "asynUInt32Digital")
-    field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x4A")
 }
 
 alias("$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP", "$(P)$(Q)CR$(CRATE):C$(C):ENABLE")
+
+## monitor enable and post, this is to make sure we send the most recent value
+## on startup due to lots of PINI
+record(calcout, "$(P)$(Q)CR$(CRATE):C$(C):_ENABLE_CHECK")
+{
+	field(INPA, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP")
+	field(CALC, "A")
+	field(SCAN, "1 second")
+	field(OOPT, "On Change")
+    field(OUT, "$(P)$(Q)CR$(CRATE):C$(C):_ENABLE_SEND.PROC")
+}
+
+record(longout, "$(P)$(Q)CR$(CRATE):C$(C):_ENABLE_SEND")
+{
+    field(DTYP, "asynUInt32Digital")
+	field(DOL, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP")
+	field(OMSL, "closed_loop")
+    field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x4A")
+}
+
+## for use in setting an explicit value to the register, it seems that
+## writing directly to VAL of the mbboDirect above does not work
+record(longout, "$(P)$(Q)CR$(CRATE):C$(C):_ENABLE:SP")
+{
+    field(DTYP, "asynUInt32Digital")
+    field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x4A")
+}
 
 record(bo, "$(P)$(Q)CR$(CRATE):C$(C):TESTPULSE:SP")
 {
