@@ -6,8 +6,8 @@ record(longout, "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:0_TO_7:SP")
 	field(DRVL, 0)
 	field(DRVH, 255)
 	field(VAL, 0)
-	field(PINI, "YES")
-    info(autosaveFields, "VAL")
+#	field(PINI, "YES")
+#    info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
 }
 
@@ -21,8 +21,8 @@ record(longout, "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:8_TO_15:SP")
 	field(DRVL, 0)
 	field(DRVH, 255)
 	field(VAL, 0)
-	field(PINI, "YES")
-    info(autosaveFields, "VAL")
+#	field(PINI, "YES")
+#    info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
 }
 
@@ -44,19 +44,18 @@ record(calcout, "$(P)$(Q)CR$(CRATE):C$(C):_ENABLE_CHECK")
 	field(CALC, "A")
 	field(SCAN, "1 second")
 	field(OOPT, "On Change")
-    field(OUT, "$(P)$(Q)CR$(CRATE):C$(C):_ENABLE_SEND.PROC")
+    field(OUT, "$(P)$(Q)CR$(CRATE):C$(C):_ENABLE_SEND PP")
 }
 
 record(longout, "$(P)$(Q)CR$(CRATE):C$(C):_ENABLE_SEND")
 {
     field(DTYP, "asynUInt32Digital")
-	field(DOL, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP")
-	field(OMSL, "closed_loop")
     field(OUT, "@asynMask($(PORT),$(C),0xffff)VMEWRITE_0x4A")
 }
 
 ## for use in setting an explicit value to the register, it seems that
 ## writing directly to VAL of the mbboDirect above does not work
+## so this allows a backdoor set
 record(longout, "$(P)$(Q)CR$(CRATE):C$(C):_ENABLE:SP")
 {
     field(DTYP, "asynUInt32Digital")
