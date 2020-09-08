@@ -6,8 +6,6 @@ record(longout, "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:0_TO_7:SP")
 	field(DRVL, 0)
 	field(DRVH, 255)
 	field(VAL, 0)
-#	field(PINI, "YES")
-#    info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
 }
 
@@ -21,8 +19,6 @@ record(longout, "$(P)$(Q)CR$(CRATE):C$(C):OUT:WIDTH:8_TO_15:SP")
 	field(DRVL, 0)
 	field(DRVH, 255)
 	field(VAL, 0)
-#	field(PINI, "YES")
-#    info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
 }
 

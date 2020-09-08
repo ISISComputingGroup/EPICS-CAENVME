@@ -6,11 +6,8 @@ record(longout, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD:SP")
     field(EGU, "mV")
 	field(DRVL, 1)
 	field(DRVH, 255)
-#	field(PINI, "YES")
 	field(VAL, 128)
-#    info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
-#	field(FLNK, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE:SP")
 }
 
 alias("$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD:SP", "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD")
@@ -23,7 +20,6 @@ record(bo, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE:SP")
     field(ONAM, "YES")
 	field(OUT, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP.B$(BIT) PP")
 	field(VAL, 0)
-#    info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
 }
 
