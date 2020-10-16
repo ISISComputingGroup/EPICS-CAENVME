@@ -6,24 +6,20 @@ record(longout, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD:SP")
     field(EGU, "mV")
 	field(DRVL, 1)
 	field(DRVH, 255)
-	field(PINI, "YES")
 	field(VAL, 128)
-    info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
-	field(FLNK, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE:SP")
 }
 
 alias("$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD:SP", "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):THOLD")
 
 ## we set bit NPP as we have a lot running due to PINI. The value is 
-## synced later
+## synced later. We do not PINI here but are processed via FLNK from above
 record(bo, "$(P)$(Q)CR$(CRATE):C$(C):CH$(CH):ENABLE:SP")
 {
     field(ZNAM, "NO")
     field(ONAM, "YES")
-	field(OUT, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP.B$(BIT) NPP")
+	field(OUT, "$(P)$(Q)CR$(CRATE):C$(C):ENABLE:SP.B$(BIT) PP")
 	field(VAL, 0)
-    info(autosaveFields, "VAL")
     info(vmeconfig, "VAL")
 }
 

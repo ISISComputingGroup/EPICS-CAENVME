@@ -2,6 +2,7 @@
 #include <bitset>
 #include <string>
 #include <iostream>
+#include <epicsThread.h>
 
 #include "CAENVMEWrapper.h"
 
@@ -14,6 +15,9 @@
 		 errmsg += CAENVMEWrapper::decodeError(ret); \
 	     throw std::runtime_error(errmsg); \
 	}
+
+static double sim_read_delay = 0.1;
+static double sim_write_delay = 0.1;
 
 const char* CAENVMEWrapper::decodeError(int code)
 {
@@ -150,6 +154,7 @@ const char* CAENVMEWrapper::decodeError(int code)
 		else
 		{
 			setData(m_simDataMap[address], data, DW); 			
+            epicsThreadSleep(sim_read_delay);
 		}
     }
 
@@ -162,7 +167,8 @@ const char* CAENVMEWrapper::decodeError(int code)
 		else
 		{
 			m_simDataMap[address] = getData(data, DW);
-			std::cerr << "CAENSIM: writing " << m_simDataMap[address] << " to address 0x" << std::hex << address << std::dec << std::endl;  
+			std::cerr << "CAENSIM: writing " << m_simDataMap[address] << " to address 0x" << std::hex << address << std::dec << std::endl;
+            epicsThreadSleep(sim_write_delay);
 		}
     }
 
