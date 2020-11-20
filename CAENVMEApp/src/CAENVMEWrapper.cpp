@@ -16,6 +16,12 @@
 	     throw std::runtime_error(errmsg); \
 	}
 
+#define CHECK_INIT \
+        if (!m_init_ok) \
+        { \
+            throw std::runtime_error("CAENVME not initialised"); \
+        }
+
 static double sim_read_delay = 0.1;
 static double sim_write_delay = 0.1;
 
@@ -24,7 +30,7 @@ const char* CAENVMEWrapper::decodeError(int code)
     return CAENVME_DecodeError(static_cast<CVErrorCodes>(code));
 }
 
-	CAENVMEWrapper::CAENVMEWrapper(bool simulate, CVBoardTypes BdType, short Link, short BdNum) : m_simulate(simulate), m_BdType(BdType), m_BdNum(BdNum), m_handle(0)
+	CAENVMEWrapper::CAENVMEWrapper(bool simulate, CVBoardTypes BdType, short Link, short BdNum) : m_simulate(simulate), m_BdType(BdType), m_BdNum(BdNum), m_handle(0), m_init_ok(true)
 	{
 		if (simulate)
 		{
@@ -35,7 +41,12 @@ const char* CAENVMEWrapper::decodeError(int code)
 		}
 		else
 		{
-			CHECK_RET(CAENVME_Init(BdType, Link, BdNum, &m_handle));
+            int ret = CAENVME_Init(BdType, Link, BdNum, &m_handle);
+            if ((int)cvSuccess != ret)
+            {
+                m_init_ok = false;
+                std::cerr << "CAENVME: failed to initialise: " << CAENVMEWrapper::decodeError(ret) << std::endl;
+            }
 		}
 	}
 	
@@ -49,6 +60,10 @@ const char* CAENVMEWrapper::decodeError(int code)
     std::string CAENVMEWrapper::boardFWRelease()
 	{
         char buffer[64];
+        if (!m_init_ok)
+        {
+            return "UNKNOWN";
+        }
 		if (!m_simulate)
 		{
 	        CHECK_RET(CAENVME_BoardFWRelease(m_handle, buffer));
@@ -63,6 +78,10 @@ const char* CAENVMEWrapper::decodeError(int code)
     std::string CAENVMEWrapper::driverRelease()
     {
         char buffer[64];
+        if (!m_init_ok)
+        {
+            return "UNKNOWN";
+        }
 		if (!m_simulate)
 		{
 	        CHECK_RET(CAENVME_DriverRelease(m_handle, buffer));
@@ -76,7 +95,7 @@ const char* CAENVMEWrapper::decodeError(int code)
 
     CAENVMEWrapper::~CAENVMEWrapper()
 	{
-		if (!m_simulate)
+		if (m_init_ok && !m_simulate)
 		{
 	        CAENVME_End(m_handle);
 		}
@@ -84,6 +103,7 @@ const char* CAENVMEWrapper::decodeError(int code)
 
     void CAENVMEWrapper::systemReset()
     {
+        CHECK_INIT;
 		if (!m_simulate)
 		{
             CHECK_RET(CAENVME_SystemReset(m_handle));
@@ -147,6 +167,7 @@ const char* CAENVMEWrapper::decodeError(int code)
 
     void CAENVMEWrapper::readCycle(uint32_t address, void *data, CVAddressModifier AM, CVDataWidth DW)
     {
+        CHECK_INIT;
 		if (!m_simulate)
 		{
 	        CHECK_RET(CAENVME_ReadCycle(m_handle, address, data, AM, DW));
@@ -160,6 +181,7 @@ const char* CAENVMEWrapper::decodeError(int code)
 
     void CAENVMEWrapper::writeCycle(uint32_t address, const void *data, CVAddressModifier AM, CVDataWidth DW)
     {
+        CHECK_INIT;
 		if (!m_simulate)
 		{
 	        CHECK_RET(CAENVME_WriteCycle(m_handle, address, const_cast<void*>(data), AM, DW));
@@ -210,6 +232,7 @@ void CAENVMEWrapper::readArray(CVDataWidth DW, uint32_t address, void* data,
 
 void CAENVMEWrapper::report(FILE* f)
 {
+	fprintf(f, "CAENVMEWrapper: init ok: %s\n", (m_init_ok ? "YES" : "NO"));
 	fprintf(f, "CAENVMEWrapper: connected to board number %d (board type: %d)\n", (int)m_BdNum, (int)m_BdType);
 	fprintf(f, "CAENVMEWrapper: swRelease = %s\n", swRelease().c_str());
 	fprintf(f, "CAENVMEWrapper: boardFWRelease = %s\n", boardFWRelease().c_str());
