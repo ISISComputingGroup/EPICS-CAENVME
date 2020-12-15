@@ -1,0 +1,15 @@
+## We cannot read from a v895 in real life, these only work with the emulator
+
+record(longin, "$(P)$(Q)SIM:CR$(CRATE):C$(C):OUT:WIDTH:0_TO_7")
+{
+    field(DTYP, "asynUInt32Digital")
+    field(INP, "@asynMask($(PORT),$(C),0xffff)VMEREAD_0x40")
+	field(SCAN, "1 second")
+}
+
+record(longin, "$(P)$(Q)SIM:CR$(CRATE):C$(C):OUT:WIDTH:8_TO_15")
+{
+    field(DTYP, "asynUInt32Digital")
+    field(INP, "@asynMask($(PORT),$(C),0xffff)VMEREAD_0x42")
+	field(SCAN, "1 second")
+}

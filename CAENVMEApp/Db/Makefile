@@ -6,7 +6,7 @@ include $(TOP)/configure/CONFIG
 #----------------------------------------------------
 # Create and install (or just install) into <top>/db
 # databases, templates, substitutions like this
-DB += v895Card.db v895Crate.db
+DB += v895Card.db v895Crate.db v895SimTest.db
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add

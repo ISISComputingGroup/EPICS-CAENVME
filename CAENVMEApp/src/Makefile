@@ -24,6 +24,7 @@ LIB_INSTALLS_WIN32 += $(CAENVMEBASE)/lib/$(CAENARCH)/CAENVMElib.lib
 
 DBD += CAENVME.dbd
 
+## old program from SECI, not used in IBEX, built for comparison/debugging
 PROD_IOC += CAENTalk
 CAENTalk_SRCS += CAENTalk.c getopt.c
 CAENTalk_LIBS += $(EPICS_BASE_IOC_LIBS)
@@ -34,9 +35,16 @@ CAENVME_LIBS += asyn
 CAENVME_LIBS_WIN32 += oncrpc
 CAENVME_LIBS += $(EPICS_BASE_IOC_LIBS)
 
+ifeq ($(findstring 10.0,$(VCVERSION)),)
+GTESTPROD_HOST += runner
+runner_SRCS += v895_tests.cpp CAENVMEWrapper.cpp
+runner_LIBS += $(EPICS_BASE_IOC_LIBS)
+GTESTS += runner
+endif
+
 #===========================
 
 include $(TOP)/configure/RULES
 #----------------------------------------
 #  ADD RULES AFTER THIS LINE
-
+include $(GTEST)/cfg/compat.RULES_BUILD
