@@ -8,7 +8,7 @@ AUTOSAVE=$(SUPPORT)/autosave/master
 BUSY=$(SUPPORT)/busy/master
 CALC=$(SUPPORT)/calc/master
 SSCAN=$(SUPPORT)/sscan/master
+GTEST=$(SUPPORT)/googletest/master
 
 include $(TOP)/../../../ISIS_CONFIG
 -include $(TOP)/../../../ISIS_CONFIG.$(EPICS_HOST_ARCH)
-
