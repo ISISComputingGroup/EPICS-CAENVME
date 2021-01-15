@@ -16,12 +16,12 @@ endif
 
 USR_CPPFLAGS_WIN32 += -I$(CAENVMEBASE)/include -DWIN32
 USR_CFLAGS_WIN32 += -I$(CAENVMEBASE)/include -DWIN32
-USR_SYS_LIBS_WIN32 += $(CAENVMEBASE)/lib/$(CAENARCH)/CAENVMElib
+USR_SYS_LIBS_WIN32 += CAENVMElib
 
 # copy relevant libraries locally to make building IOC easier later
 # we copy CAENVMElib.dll PlxApi.dll via the O.$(T_A) as thet are needed there for the test runner
 BIN_INSTALLS_WIN32 += CAENVMElib.dll PlxApi.dll
-LIB_INSTALLS_WIN32 += $(CAENVMEBASE)/lib/$(CAENARCH)/CAENVMElib.lib
+LIB_INSTALLS_WIN32 += CAENVMElib.lib
 
 DBD += CAENVME.dbd
 
@@ -43,7 +43,7 @@ runner_LIBS += $(EPICS_BASE_IOC_LIBS)
 GTESTS += runner
 endif
 
-TARGETS += CAENVMElib.dll PlxApi.dll
+TARGETS += CAENVMElib.lib CAENVMElib.dll PlxApi.dll
 
 #===========================
 
@@ -54,6 +54,9 @@ include $(GTEST)/cfg/compat.RULES_BUILD
 
 # copy in libraries needed to run GTESTS into O.$(T_A)
 ifdef T_A
+CAENVMElib.lib : $(CAENVMEBASE)/lib/$(CAENARCH)/CAENVMElib.lib CAENVMElib.dll PlxApi.dll
+	$(CP) -f $< $@
+
 CAENVMElib.dll : $(CAENVMEBASE)/bin/$(CAENARCH)/CAENVMElib.dll
 	$(CP) -f $< $@
 
