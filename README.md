@@ -1,0 +1,1 @@
+EPICS module for use with CAENVME library to control equipment such as the CAEN v895 discriminator
