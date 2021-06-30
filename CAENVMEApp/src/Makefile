@@ -50,7 +50,7 @@ TARGETS += CAENVMElib.lib CAENVMElib.dll PlxApi.dll
 include $(TOP)/configure/RULES
 #----------------------------------------
 #  ADD RULES AFTER THIS LINE
-include $(GTEST)/cfg/compat.RULES_BUILD
+-include $(GTEST)/cfg/compat.RULES_BUILD
 
 # copy in libraries needed to run GTESTS into O.$(T_A)
 ifdef T_A
