@@ -32,12 +32,16 @@ const char* CAENVMEWrapper::decodeError(int code)
 
 	CAENVMEWrapper::CAENVMEWrapper(bool simulate, CVBoardTypes BdType, short Link, short BdNum) : m_simulate(simulate), m_BdType(BdType), m_BdNum(BdNum), m_handle(0), m_init_ok(true)
 	{
+        const int MAXCARDS = 10;
 		if (simulate)
 		{
 			std::cerr << "Creating simlated CAENVME for v895 module" << std::endl;
-			m_simDataMap[0xFA] = 0xFAF5; // fixed code
 			std::bitset<16> mod_code(std::string("0000100001010100")); // Fixed manufacturer and model number for CAEN v895
-			m_simDataMap[0xFC] = mod_code.to_ulong();
+            for(int i=0; i<MAXCARDS; ++i) {
+			    m_simDataMap[0xFA + i * 0x10000] = 0xFAF5; // fixed code
+			    m_simDataMap[0xFC + i * 0x10000] = mod_code.to_ulong();
+			    m_simDataMap[0xFE + i * 0x10000] = 0x1234; // version and serial number of board
+            }
 		}
 		else
 		{
