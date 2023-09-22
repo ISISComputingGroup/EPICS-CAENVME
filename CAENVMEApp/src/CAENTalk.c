@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
+#include <epicsThread.h>
 #include "getopt.h"
 
 typedef unsigned short ushort;
@@ -128,13 +129,16 @@ static void print_usage()
 {
 	printf("\n");
 	printf("# read and print data value to screen - assumes board 0 unless -bN specified\n\n");
-	printf("    %s [-bN] card address [count(=1)] [address_step(=1)]\n\n", program_name);       
+	printf("    %s [-bN] [-t delay] card address [count(=1)] [address_step(=1)]\n\n", program_name);       
     printf("# writes data value to address\n\n");
-	printf("    %s [-bN] -w card address value [count(=1)] [value_step(=0)]\n\n", program_name);
+	printf("    %s [-bN] [-t delay] -w card address value [count(=1)] [value_step(=0)]\n\n", program_name);
 	printf("# card, address and value are all in hex\n");
 	printf("# count and value_step are in decimal\n");
 	printf("# address_step is in decimal and in units of the data width, so for 16bit wide\n");
 	printf("#              data address_step=1 will increment the address by 2 bytes\n");
+	printf("#  -t delay will repeat operation evey delay seconds\n");
+    printf("#           values less than 0.001 may not be honoured well\n");
+    printf("#           0.0 is allowed and just yields thread\n");
 	printf("\n");
 }
 
@@ -162,14 +166,15 @@ int main(int argc, void *argv[])
 	CVDataWidth dtsize = cvD16;
 	int op = OP_READ;
 	uint32_t addr, data;
-	CVErrorCodes ret;
+	CVErrorCodes ret = cvSuccess;
 	caen_board_t caen_board[20];
 	FILE* inif;
 	char ini_path[256];
 	char buffer[256];
 	unsigned nboard = 0;
+    double delay_time = -1.0;
 	program_name = "CaenTalk.exe";
-	while( (opt = getopt(argc, argv, "a:b:d:whv")) != -1 )
+	while( (opt = getopt(argc, argv, "a:b:d:t:whv")) != -1 )
 	{
 		switch(opt)
 		{
@@ -235,6 +240,10 @@ int main(int argc, void *argv[])
 
 			case 'v':
 				verbose = 1;
+				break;
+
+			case 't':
+				delay_time = atof(optarg);
 				break;
 
 			default:
@@ -306,41 +315,48 @@ int main(int argc, void *argv[])
         printf("\n\n Error opening CAEN device %d link %d\n", Device, Link);
         exit(EXIT_FAILURE);
     }
+    do {
+        if (op == OP_READ)
+        {
+            if ( (argc - optind) < 2 )
+            {
+                printf("error: must give card and address to read from\n");
+                print_usage();
+                CAENVME_End(BHandle);
+                exit(EXIT_FAILURE);
+            }
+            sscanf(argv[optind], "%x", &card);
+            sscanf(argv[optind+1], "%x", &addr);
+            addr += (base_address + card * card_increment);
+            count = ((argc - optind) > 2) ? atol(argv[optind+2]) : 1;
+            step = ((argc - optind) > 3) ? atol(argv[optind+3]) : 1;
+            ret = CaenVmeRead(BHandle, dtsize, addr, &data, am, count, step);
+        }
 
-	if (op == OP_READ)
-	{
-		if ( (argc - optind) < 2 )
-		{
-			printf("error: must give card and address to read from\n");
-			print_usage();
-			CAENVME_End(BHandle);
-			exit(EXIT_FAILURE);
-		}
-		sscanf(argv[optind], "%x", &card);
-		sscanf(argv[optind+1], "%x", &addr);
-		addr += (base_address + card * card_increment);
-		count = ((argc - optind) > 2) ? atol(argv[optind+2]) : 1;
-		step = ((argc - optind) > 3) ? atol(argv[optind+3]) : 1;
-		ret = CaenVmeRead(BHandle, dtsize, addr, &data, am, count, step);
-	}
-
-	if (op == OP_WRITE)
-	{
-		if ( (argc - optind) < 3 )
-		{
-			printf("error: must give card, address and value to write to\n");
-			print_usage();
-			CAENVME_End(BHandle);
-			exit(EXIT_FAILURE);
-		}
-		sscanf(argv[optind], "%x", &card);
-		sscanf(argv[optind+1], "%x", &addr);
-		addr += (base_address + card * card_increment);
-		sscanf(argv[optind+2], "%x", &data);
-		count = ((argc - optind) > 3) ? atol(argv[optind+3]) : 1;
-		step = ((argc - optind) > 4) ? atol(argv[optind+4]) : 0;
-		ret = CaenVmeWrite(BHandle, dtsize, addr, data, am, count, step);
-	}
+        if (op == OP_WRITE)
+        {
+            if ( (argc - optind) < 3 )
+            {
+                printf("error: must give card, address and value to write to\n");
+                print_usage();
+                CAENVME_End(BHandle);
+                exit(EXIT_FAILURE);
+            }
+            sscanf(argv[optind], "%x", &card);
+            sscanf(argv[optind+1], "%x", &addr);
+            addr += (base_address + card * card_increment);
+            sscanf(argv[optind+2], "%x", &data);
+            count = ((argc - optind) > 3) ? atol(argv[optind+3]) : 1;
+            step = ((argc - optind) > 4) ? atol(argv[optind+4]) : 0;
+            ret = CaenVmeWrite(BHandle, dtsize, addr, data, am, count, step);
+        }
+        if (delay_time >= 0.0) {
+            Sleep((int)(1000 * delay_time));
+        }
+    } while(ret == cvSuccess && delay_time >= 0.0);
     CAENVME_End(BHandle);
+    if (ret != cvSuccess) {
+        printf("ERROR: operation failed with code %d\n", ret);
+    }
 	return ret;
 }
