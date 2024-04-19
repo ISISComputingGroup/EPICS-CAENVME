@@ -72,6 +72,8 @@ record(longin, "$(P)$(Q)CR$(CRATE):C$(C):MOD_ID_1")
     field(DTYP, "asynUInt32Digital")
     field(INP, "@asynMask($(PORT),$(C),0xffff)VMEREAD_0xFA")
 	field(PINI, "YES")
+## uncomment this permanently after testing
+#	field(SCAN, "10 second")
 }
 
 ## manufacturer and board/module type
@@ -81,12 +83,33 @@ record(longin, "$(P)$(Q)CR$(CRATE):C$(C):MOD_ID_2")
     field(DTYP, "asynUInt32Digital")
     field(INP, "@asynMask($(PORT),$(C),0xffff)VMEREAD_0xFC")
 	field(PINI, "YES")
+## uncomment this permanently after testing 
+#	field(SCAN, "10 second")
 }
 
-## version and serial number
+## version (top 4 bits) and serial number (bottom 12) of 16 bit word
 record(longin, "$(P)$(Q)CR$(CRATE):C$(C):MOD_ID_3")
 {
     field(DTYP, "asynUInt32Digital")
     field(INP, "@asynMask($(PORT),$(C),0xffff)VMEREAD_0xFE")
 	field(PINI, "YES")
+}
+
+record(calcout, "$(P)$(Q)CR$(CRATE):C$(C):STAT:CHK")
+{
+    field(INPA, "$(P)$(Q)CR$(CRATE):C$(C):MOD_ID_1 CP MS")
+    field(INPB, "$(P)$(Q)CR$(CRATE):C$(C):MOD_ID_2 CP MS")
+	field(CALC, "(A=64245&&B=2132)?1:0")
+	field(ASG, "READONLY")
+	field(IVOA, "Set output to IVOV")
+	field(IVOV, "0")
+	field(OUT, "$(P)$(Q)CR$(CRATE):C$(C):STAT PP")
+}
+
+record(bi, "$(P)$(Q)CR$(CRATE):C$(C):STAT")
+{
+    field(ZNAM, "ERROR")
+	field(ONAM, "OK")
+	field(ZSV, "MAJOR")
+	info(alarm, "CAENV895")
 }
