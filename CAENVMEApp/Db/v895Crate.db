@@ -14,13 +14,6 @@ record(longin, "$(P)$(Q)CR$(CRATE):BOARD_ID")
 	field(SCAN, "I/O Intr")
 }
 
-record(stringin, "$(P)$(Q)CR$(CRATE):THRESHOLD_FILE")
-{
-	field(DESC, "Last threshold file loaded via script")
-    info(INTEREST, "HIGH")
-	info(archive, "VAL")
-}
-
 record(ai, "$(P)$(Q)CR$(CRATE):CARDS")
 {
 	field(DESC, "Number of cards in this crate")
