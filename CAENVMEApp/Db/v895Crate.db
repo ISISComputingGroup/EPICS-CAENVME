@@ -13,3 +13,9 @@ record(longin, "$(P)$(Q)CR$(CRATE):BOARD_ID")
     field(INP, "@asyn($(PORT),0)BOARDID")
 	field(SCAN, "I/O Intr")
 }
+
+record(ai, "$(P)$(Q)CR$(CRATE):CARDS")
+{
+	field(DESC, "Number of cards in this crate")
+	field(VAL, "$(CARDS)")
+}
