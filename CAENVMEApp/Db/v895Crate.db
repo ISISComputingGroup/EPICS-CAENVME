@@ -14,8 +14,11 @@ record(longin, "$(P)$(Q)CR$(CRATE):BOARD_ID")
 	field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)$(Q)CR$(CRATE):CARDS")
+record(calc, "$(P)$(Q)CR$(CRATE):CARDS")
 {
 	field(DESC, "Number of cards in this crate")
-	field(VAL, "$(CARDS)")
+	field(A, "$(CARDS)")
+	field(CALC, "A+1")
+	field(PINI, "YES")
+	field(ASG, "READONLY")
 }
