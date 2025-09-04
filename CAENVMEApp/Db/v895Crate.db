@@ -22,3 +22,10 @@ record(calc, "$(P)$(Q)CR$(CRATE):CARDS")
 	field(PINI, "YES")
 	field(ASG, "READONLY")
 }
+
+record(waveform, "$(P)$(Q)CR$(CRATE):THRESHOLD_FILE")
+{
+	field(DESC, "Threshold file")
+	field(FTVL, "CHAR")
+	field(NELM, "256")
+}
