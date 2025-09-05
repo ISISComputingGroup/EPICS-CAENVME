@@ -22,3 +22,15 @@ record(calc, "$(P)$(Q)CR$(CRATE):CARDS")
 	field(PINI, "YES")
 	field(ASG, "READONLY")
 }
+
+# not used by IOC. As far as we are aware is just set by
+# python threshold script to indicate the table loaded that could then be used
+# by e.g. a reload script, however script only seems to just set this each time and OPI
+# does't display it, though there may be another script somewhere else that we
+# are unaware of. 
+record(waveform, "$(P)$(Q)CR$(CRATE):THRESHOLD_FILE")
+{
+	field(DESC, "Threshold file")
+	field(FTVL, "CHAR")
+	field(NELM, "256")
+}
